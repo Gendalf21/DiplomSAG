@@ -26,8 +26,8 @@
     - для конфигурации БД PostgreSQL:  
       ```./gradlew clean test "-Ddb.url=jdbc:postgresql://185.119.57.47:5432/app"```
 * запустить отчеты командой:
-```./gradlew allureReport (первоначальная команда)```
-```./gradlew allureServe (запуск и открытие отчетов)```
+  - ```./gradlew allureReport (первоначальная команда)```
+  - ```./gradlew allureServe (запуск и открытие отчетов)```
 * остановить SUT комбинацией клавиш ```CTRL+C```
 * остановить работу контейнеров ```docker stop $(docker ps –a –q)``` 
 * закрыть клиент PuTTY

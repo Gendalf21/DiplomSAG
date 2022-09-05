@@ -15,14 +15,14 @@
 
 **Результаты**
 
-Количество тест-кейсов: 42 тест-кейса, повторяющихся для обеих СУБД:
+Количество тест-кейсов: 38 тест-кейсов, повторяющихся для обеих СУБД:
 
 - 4 позитивных (по 2 для каждого способа оплаты)
 - 34 негативных (по 2 для каждого способа оплаты). 
 
 Соотношение успешных/неуспешных тестов: 26/12
 
-[AllureReport](https://github.com/Gendalf21/DiplomSAG/blob/master/documents/Screenshot.PNG)
+![AllureReport](https://github.com/Gendalf21/DiplomSAG/blob/master/documents/Screenshot.PNG)
 
 **Общие рекомендации**
 
