@@ -9,7 +9,6 @@ import ru.netology.page.TourPage;
 
 import static com.codeborne.selenide.Selenide.open;
 
-
 public class NegativeTest {
 
     @BeforeAll
@@ -397,6 +396,7 @@ public class NegativeTest {
         payCard.enterCardData(invalidCard);
         payCard.invalidCardFormat();
     }
+
     @DisplayName("Credit - Zero CVV")
     @Test
     public void shouldNotCreditZeroCVV() {

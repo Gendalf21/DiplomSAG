@@ -1,6 +1,5 @@
 package ru.netology.data;
 
-import com.mysql.cj.jdbc.Driver;
 import lombok.SneakyThrows;
 
 import java.sql.Connection;

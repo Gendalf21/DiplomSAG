@@ -83,7 +83,6 @@ public class PositiveTest {
         var paymentId = SQLunits.getPaymentId();
         var statusPayment = SQLunits.getStatusCredit(paymentId);
         Assertions.assertEquals("APPROVED", statusPayment);
-
     }
 
 }
