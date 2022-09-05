@@ -135,15 +135,6 @@ public class DataHelper {
                 Integer.toString(enOption.number().numberBetween(100, 999)));
     }
 
-    /*public static CardInformation getCyrillicName() {
-        return new CardInformation(
-                cardNumber.getApprovedCardNumber(),
-                dataGenerator.shiftYear(5).getYear(),
-                dataGenerator.shiftMonth(2).getMonth(),
-                faker.name().fullName(),
-                Integer.toString(enOption.number().numberBetween(100, 999)));
-    }*/
-
     public static CardInformation getNumericName() {
         return new CardInformation(
                 cardNumber.getApprovedCardNumber(),

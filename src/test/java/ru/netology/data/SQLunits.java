@@ -19,17 +19,17 @@ public class SQLunits {
 
     @SneakyThrows
     public static String getPaymentId() {
-        String paymentId = null;
+        String payment_Id = null;
         var idSQL = "SELECT payment_id FROM order_entity order by created DESC;";
         try (var conn = getConnection();
              var statusStmt = conn.prepareStatement(idSQL)) {
             try (var rs = statusStmt.executeQuery()) {
                 if (rs.next()) {
-                    paymentId = rs.getString("payment_id");
+                    payment_Id = rs.getString("payment_id");
                 }
             }
         }
-        return paymentId;
+        return payment_Id;
     }
 
     @SneakyThrows

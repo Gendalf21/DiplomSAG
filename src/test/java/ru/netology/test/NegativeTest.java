@@ -44,7 +44,7 @@ public class NegativeTest {
 
     @DisplayName("Credit - Declined card.")
     @Test
-    public void shouldNotPayCreditDeclinedCard() {
+    public void shouldNotCreditDeclinedCard() {
         var tourPage = new TourPage();
         var buyCredit = tourPage.buyCredit();
         var declinedCard = DataHelper.getDeclinedCard();
@@ -57,7 +57,7 @@ public class NegativeTest {
         Assertions.assertEquals("DECLINED", statusPayment);
     }
 
-    @DisplayName("Card with all blank data.")
+    @DisplayName("Card - All blank data.")
     @Test
     public void shouldNotPayEmptyForm() {
         var tourPage = new TourPage();
@@ -68,7 +68,7 @@ public class NegativeTest {
         payCard.invalidCardFormat();
     }
 
-    @DisplayName("Credit with all blank data.")
+    @DisplayName("Credit - All blank data.")
     @Test
     public void shouldNotCreditEmptyForm() {
         var tourPage = new TourPage();
@@ -81,7 +81,7 @@ public class NegativeTest {
 
     @DisplayName("Card - Blank card number.")
     @Test
-    public void shouldNotConfirmPaymentWithEmptyFieldCard() {
+    public void shouldNotPayEmptyCard() {
         var TourPage = new TourPage();
         var payCard = TourPage.payCard();
         var fieldCardEmpty = DataHelper.getCardNumberEmpty();
@@ -92,7 +92,7 @@ public class NegativeTest {
 
     @DisplayName("Credit - Blank card number.")
     @Test
-    public void shouldNotConfirmBuyingOnCreditWithEmptyFieldCard() {
+    public void shouldNotCreditEmptyCard() {
         var TourPage = new TourPage();
         var buyCredit = TourPage.buyCredit();
         var fieldCardEmpty = DataHelper.getCardNumberEmpty();
@@ -101,9 +101,9 @@ public class NegativeTest {
         buyCredit.invalidCreditFormat();
     }
 
-    @DisplayName("By Card with Year field blank data.")
+    @DisplayName("Card - Blank Year.")
     @Test
-    public void shouldNotConfirmPaymentWithEmptyFieldYear() {
+    public void shouldNotPayEmptyYear() {
         var TourPage = new TourPage();
         var payCard = TourPage.payCard();
         var fieldYearEmpty = DataHelper.getYearEmpty();
@@ -112,9 +112,9 @@ public class NegativeTest {
         payCard.invalidCardFormat();
     }
 
-    @DisplayName("By Credit with Year field blank data.")
+    @DisplayName("Credit - Blank Year.")
     @Test
-    public void shouldNotConfirmBuyingOnCreditWithEmptyFieldYear() {
+    public void shouldNotCreditEmptyYear() {
         var TourPage = new TourPage();
         var buyCredit = TourPage.buyCredit();
         var fieldYearEmpty = DataHelper.getYearEmpty();
@@ -123,9 +123,9 @@ public class NegativeTest {
         buyCredit.invalidCreditFormat();
     }
 
-    @DisplayName("By Card with Month field blank data.")
+    @DisplayName("Card - Blank Month.")
     @Test
-    public void shouldNotConfirmPaymentWithEmptyFieldMonth() {
+    public void shouldNotPayEmptyMonth() {
         var TourPage = new TourPage();
         var payCard = TourPage.payCard();
         var fieldMonthEmpty = DataHelper.getMonthEmpty();
@@ -134,9 +134,9 @@ public class NegativeTest {
         payCard.invalidCardFormat();
     }
 
-    @DisplayName("By Credit with Month field blank data.")
+    @DisplayName("Credit - Blank Month.")
     @Test
-    public void shouldNotConfirmBuyingOnCreditWithEmptyFieldMonth() {
+    public void shouldNotCreditEmptyMonth() {
         var TourPage = new TourPage();
         var buyCredit = TourPage.buyCredit();
         var fieldMonthEmpty = DataHelper.getMonthEmpty();
@@ -145,9 +145,9 @@ public class NegativeTest {
         buyCredit.invalidCreditFormat();
     }
 
-    @DisplayName("By Card with Holder field blank data")
+    @DisplayName("Card - Blank Holder")
     @Test
-    public void shouldNotConfirmPaymentWithEmptyFieldHolder() {
+    public void shouldNotPayEmptyHolder() {
         var TourPage = new TourPage();
         var payCard = TourPage.payCard();
         var fieldHolderEmpty = DataHelper.getHolderEmpty();
@@ -156,9 +156,9 @@ public class NegativeTest {
         payCard.requiredCardToFillIn();
     }
 
-    @DisplayName("By Credit with Holder field blank data")
+    @DisplayName("Credit - Blank Holder")
     @Test
-    public void shouldNotConfirmBuyingOnCreditWithEmptyFieldHolder() {
+    public void shouldNotCreditEmptyHolder() {
         var TourPage = new TourPage();
         var buyCredit = TourPage.buyCredit();
         var fieldHolderEmpty = DataHelper.getHolderEmpty();
@@ -167,9 +167,9 @@ public class NegativeTest {
         buyCredit.requiredCreditToFillIn();
     }
 
-    @DisplayName("By Card with blank CVV field data.")
+    @DisplayName("Card - Blank CVV.")
     @Test
-    public void shouldNotConfirmPaymentWithEmptyFieldCvv() {
+    public void shouldNotPayEmptyCvv() {
         var TourPage = new TourPage();
         var payCard = TourPage.payCard();
         var fieldCvvEmpty = DataHelper.getCVVEmpty();
@@ -178,9 +178,9 @@ public class NegativeTest {
         payCard.invalidCardFormat();
     }
 
-    @DisplayName("By Credit with blank CVV field data.")
+    @DisplayName("Credit - Blank CVV.")
     @Test
-    public void shouldNotConfirmBuyingOnCreditWithEmptyFieldCvv() {
+    public void shouldNotCreditEmptyCvv() {
         var TourPage = new TourPage();
         var buyCredit = TourPage.buyCredit();
         var fieldCvvEmpty = DataHelper.getCVVEmpty();
@@ -189,277 +189,223 @@ public class NegativeTest {
         buyCredit.invalidCreditFormat();
     }
 
-    @DisplayName("By Card Declined card.")
+    @DisplayName("Card - Expired year.")
     @Test
-    public void shouldPaymentWithDeclinedCard() {
+    public void shouldNotPayExpiredYear() {
         var TourPage = new TourPage();
         var payCard = TourPage.payCard();
-        var declinedCardInformation = DataHelper.getDeclinedCard();
+        var invalidCard = DataHelper.getExpiredYear();
         TourPage.payCard();
-        payCard.enterCardData(declinedCardInformation);
-        payCard.notSuccessfulPayCardPayment();
-
-        var paymentId = SQLunits.getPaymentId();
-        var statusForPayment = SQLunits.getStatusPayment(paymentId);
-        Assertions.assertEquals("DECLINED", statusForPayment);
+        payCard.enterCardData(invalidCard);
+        payCard.expiredCardYear();
     }
 
-    @DisplayName("By Credit Declined card.")
+    @DisplayName("Credit - Expired year.")
     @Test
-    public void shouldPaymentWithDeclinedCreditCard() {
+    public void shouldNotCreditExpiredYear() {
         var TourPage = new TourPage();
         var buyCredit = TourPage.buyCredit();
-        var declinedCardInformation = DataHelper.getDeclinedCard();
+        var invalidCard = DataHelper.getExpiredYear();
         TourPage.buyCredit();
-        buyCredit.enterCreditCardData(declinedCardInformation);
-        buyCredit.notSuccessfulCreditCardPayment();
-
-        var paymentId = SQLunits.getPaymentId();
-        var statusForPayment = SQLunits.getStatusForCredit(paymentId);
-        Assertions.assertEquals("DECLINED", statusForPayment);
-    }
-
-    @DisplayName("By card expired card (in previous years)")
-    @Test
-    public void shouldNotConfirmPaymentWithExpiredYearCard() {
-        var TourPage = new TourPage();
-        var payCard = TourPage.payCard();
-        var invalidCardInformation = DataHelper.getExpiredYear();
-        TourPage.payCard();
-        payCard.enterCardData(invalidCardInformation);
-        payCard.expiredPayCardYear();
-    }
-
-    @DisplayName("By credit expired card (in previous years)")
-    @Test
-    public void shouldNotConfirmBuyingOnCreditWithExpiredYearCard() {
-        var TourPage = new TourPage();
-        var buyCredit = TourPage.buyCredit();
-        var invalidCardInformation = DataHelper.getExpiredYear();
-        TourPage.buyCredit();
-        buyCredit.enterCreditCardData(invalidCardInformation);
+        buyCredit.enterCreditCardData(invalidCard);
         buyCredit.expiredCreditCardYear();
     }
 
-    @DisplayName("By card expired card (previous month)")
+    @DisplayName("Card - Expired month.")
     @Test
-    public void shouldNotConfirmPaymentWithExpiredMonthCard() {
+    public void shouldNotPayExpiredMonth() {
         var TourPage = new TourPage();
         var payCard = TourPage.payCard();
-        var invalidCardInformation = DataHelper.getExpiredMonth();
+        var invalidCard = DataHelper.getExpiredMonth();
         TourPage.payCard();
-        payCard.enterCardData(invalidCardInformation);
+        payCard.enterCardData(invalidCard);
         payCard.expiredPayCardMonth();
     }
 
-    @DisplayName("By Credit expired card (previous month)")
+    @DisplayName("Credit - Expired month.")
     @Test
-    public void shouldNotConfirmBuyingOnCreditWithExpiredMonthCard() {
+    public void shouldNotCreditExpiredMonth() {
         var TourPage = new TourPage();
         var buyCredit = TourPage.buyCredit();
-        var invalidCardInformation = DataHelper.getExpiredMonth();
+        var invalidCard = DataHelper.getExpiredMonth();
         TourPage.buyCredit();
-        buyCredit.enterCreditCardData(invalidCardInformation);
+        buyCredit.enterCreditCardData(invalidCard);
         buyCredit.expiredCreditCardMonth();
     }
 
-    @DisplayName("By card with zeros in month field.")
+    @DisplayName("Card - Invalid card number.")
     @Test
-    public void shouldNotConfirmPaymentWithZeroMonth() {
+    public void shouldNotPayInvalidNumber() {
         var TourPage = new TourPage();
         var payCard = TourPage.payCard();
-        var invalidCardInformation = DataHelper.getZeroMonth();
+        var invalidCard = DataHelper.getInvalidNumber();
         TourPage.payCard();
-        payCard.enterCardData(invalidCardInformation);
+        payCard.enterCardData(invalidCard);
+        payCard.invalidCardFormat();
+    }
+
+    @DisplayName("Credit - Invalid card number.")
+    @Test
+    public void shouldNotCreditInvalidNumber() {
+        var TourPage = new TourPage();
+        var buyCredit = TourPage.buyCredit();
+        var invalidCard = DataHelper.getInvalidNumber();
+        TourPage.buyCredit();
+        buyCredit.enterCreditCardData(invalidCard);
+        buyCredit.invalidCreditFormat();
+    }
+
+    @DisplayName("Card - Wrong year.")
+    @Test
+    public void shouldNotPayWrongYear() {
+        var TourPage = new TourPage();
+        var payCard = TourPage.payCard();
+        var invalidCard = DataHelper.getWrongYear();
+        TourPage.payCard();
+        payCard.enterCardData(invalidCard);
+        payCard.invalidCardFormat();
+    }
+
+    @DisplayName("Credit - Wrong year.")
+    @Test
+    public void shouldNotCreditWrongYear() {
+        var TourPage = new TourPage();
+        var buyCredit = TourPage.buyCredit();
+        var invalidCard = DataHelper.getWrongYear();
+        TourPage.buyCredit();
+        buyCredit.enterCreditCardData(invalidCard);
+        buyCredit.invalidCreditFormat();
+    }
+
+    @DisplayName("Card - Wrong month.")
+    @Test
+    public void shouldNotPayWrongMonth() {
+        var TourPage = new TourPage();
+        var payCard = TourPage.payCard();
+        var invalidCard = DataHelper.getWrongMonth();
+        TourPage.payCard();
+        payCard.enterCardData(invalidCard);
+        payCard.invalidCardFormat();
+    }
+
+    @DisplayName("Credit - Wrong month.")
+    @Test
+    public void shouldNotCreditWrongMonth() {
+        var TourPage = new TourPage();
+        var buyCredit = TourPage.buyCredit();
+        var invalidCard = DataHelper.getWrongMonth();
+        TourPage.buyCredit();
+        buyCredit.enterCreditCardData(invalidCard);
+        buyCredit.invalidCreditFormat();
+    }
+
+    @DisplayName("Сard - Numeric holder's name.")
+    @Test
+    public void shouldNotPayNumericHolder() {
+        var TourPage = new TourPage();
+        var payCard = TourPage.payCard();
+        var invalidCard = DataHelper.getNumericName();
+        TourPage.payCard();
+        payCard.enterCardData(invalidCard);
+        payCard.invalidCardFormat();
+    }
+
+    @DisplayName("Сredit - Numeric holder's name.")
+    @Test
+    public void shouldNotCreditNumericHolder() {
+        var TourPage = new TourPage();
+        var buyCredit = TourPage.buyCredit();
+        var invalidCard = DataHelper.getNumericName();
+        TourPage.buyCredit();
+        buyCredit.enterCreditCardData(invalidCard);
+        buyCredit.invalidCreditFormat();
+    }
+
+    @DisplayName("Card - Invalid CVV.")
+    @Test
+    public void shouldNotPayInvalidCVV() {
+        var TourPage = new TourPage();
+        var payCard = TourPage.payCard();
+        var invalidCard = DataHelper.getInvalidCVV();
+        TourPage.payCard();
+        payCard.enterCardData(invalidCard);
+        payCard.invalidCardFormat();
+    }
+
+    @DisplayName("Credit - Invalid CVV.")
+    @Test
+    public void shouldNotCreditInvalidCVV() {
+        var TourPage = new TourPage();
+        var buyCredit = TourPage.buyCredit();
+        var invalidCard = DataHelper.getInvalidCVV();
+        TourPage.buyCredit();
+        buyCredit.enterCreditCardData(invalidCard);
+        buyCredit.invalidCreditFormat();
+    }
+
+    @DisplayName("Card - Zero card number.")
+    @Test
+    public void shouldNotPayZeroNumber() {
+        var TourPage = new TourPage();
+        var payCard = TourPage.payCard();
+        var invalidCard = DataHelper.getZeroCard();
+        TourPage.payCard();
+        payCard.enterCardData(invalidCard);
+        payCard.invalidCardFormat();
+    }
+
+    @DisplayName("Credit - Zero card number.")
+    @Test
+    public void shouldNotCreditZeroNumber() {
+        var TourPage = new TourPage();
+        var buyCredit = TourPage.buyCredit();
+        var invalidCard = DataHelper.getZeroCard();
+        TourPage.buyCredit();
+        buyCredit.enterCreditCardData(invalidCard);
+        buyCredit.invalidCreditFormat();
+    }
+
+    @DisplayName("Card - Zero month.")
+    @Test
+    public void shouldNotPayZeroMonth() {
+        var TourPage = new TourPage();
+        var payCard = TourPage.payCard();
+        var invalidCard = DataHelper.getZeroMonth();
+        TourPage.payCard();
+        payCard.enterCardData(invalidCard);
         payCard.expiredPayCardMonth();
     }
 
-    @DisplayName("By credit with card with zeros in month field")
+    @DisplayName("Credit- Zero month.")
     @Test
-    public void shouldConfirmBuyingOnCreditWithZeroMonth() {
+    public void shouldNotCreditZeroMonth() {
         var TourPage = new TourPage();
         var buyCredit = TourPage.buyCredit();
-        var invalidCardInformation = DataHelper.getZeroMonth();
+        var invalidCard = DataHelper.getZeroMonth();
         TourPage.buyCredit();
-        buyCredit.enterCreditCardData(invalidCardInformation);
+        buyCredit.enterCreditCardData(invalidCard);
         buyCredit.expiredCreditCardMonth();
     }
 
-    @DisplayName("By card with an incorrect date field format")
+    @DisplayName("Card - Zero CVV")
     @Test
-    public void shouldNotConfirmPaymentWithWrongFormatFieldsCard() {
+    public void shouldNotPayZeroCVV() {
         var TourPage = new TourPage();
         var payCard = TourPage.payCard();
-        var invalidCardInformation = DataHelper.getWrongFormatDate();
+        var invalidCard = DataHelper.getZeroCVV();
         TourPage.payCard();
-        payCard.enterCardData(invalidCardInformation);
+        payCard.enterCardData(invalidCard);
         payCard.invalidCardFormat();
     }
-
-    @DisplayName("By credit with card with an incorrect date field format")
+    @DisplayName("Credit - Zero CVV")
     @Test
-    public void shouldNotConfirmBuyingOnCreditWithWrongFormatFieldsCard() {
+    public void shouldNotCreditZeroCVV() {
         var TourPage = new TourPage();
         var buyCredit = TourPage.buyCredit();
-        var invalidCardInformation = DataHelper.getWrongFormatDate();
+        var invalidCard = DataHelper.getZeroCVV();
         TourPage.buyCredit();
-        buyCredit.enterCreditCardData(invalidCardInformation);
+        buyCredit.enterCreditCardData(invalidCard);
         buyCredit.invalidCreditFormat();
     }
 
-    @DisplayName("By card with the holder's name in Cyrillic")
-    @Test
-    public void shouldNotConfirmPaymentWithCyrillicHolderFieldCard() {
-        var TourPage = new TourPage();
-        var payCard = TourPage.payCard();
-        var invalidCardInformation = DataHelper.getCardInformationWithCyrillicName();
-        TourPage.payCard();
-        payCard.enterCardData(invalidCardInformation);
-        payCard.invalidCardFormat();
-    }
-
-    @DisplayName("By Credit. Card with the holder's name in Cyrillic")
-    @Test
-    public void shouldNotConfirmBuyingOnCreditWithCyrillicHolderFieldCard() {
-        var TourPage = new TourPage();
-        var buyCredit = TourPage.buyCredit();
-        var invalidCardInformation = DataHelper.getCardInformationWithCyrillicName();
-        TourPage.buyCredit();
-        buyCredit.enterCreditCardData(invalidCardInformation);
-        buyCredit.invalidCreditFormat();
-    }
-
-    @DisplayName("By card with the holder's name in Special Symbol.")
-    @Test
-    public void shouldNotConfirmPaymentWithSpecialSymbolInHolderFieldCard() {
-        var TourPage = new TourPage();
-        var payCard = TourPage.payCard();
-        var invalidCardInformation = DataHelper.getCardInformationSpecialSymbolInHolderFieldCard();
-        TourPage.payCard();
-        payCard.enterCardData(invalidCardInformation);
-        payCard.invalidCardFormat();
-    }
-
-    @DisplayName("By credit. Card with the holder's name Special Symbol")
-    @Test
-    public void shouldNotConfirmBuyingOnCreditWithEnglishPlusNumbersPlusSpecialSymbolInHolderFieldCard() {
-        var TourPage = new TourPage();
-        var buyCredit = TourPage.buyCredit();
-        var invalidCardInformation = DataHelper.getCardInformationSpecialSymbolInHolderFieldCard();
-        TourPage.buyCredit();
-        buyCredit.enterCreditCardData(invalidCardInformation);
-        buyCredit.invalidCreditFormat();
-    }
-
-    @DisplayName("By card with numbers in the name of the holder")
-    @Test
-    public void shouldNotConfirmPaymentWithNumericHolderFieldCard() {
-        var TourPage = new TourPage();
-        var payCard = TourPage.payCard();
-        var invalidCardInformation = DataHelper.getNumericName();
-        TourPage.payCard();
-        payCard.enterCardData(invalidCardInformation);
-        payCard.invalidCardFormat();
-    }
-
-    @DisplayName("By Credit. Card data with numbers in the name of the holder")
-    @Test
-    public void shouldNotConfirmBuyingOnCreditWithNumericHolderFieldCard() {
-        var TourPage = new TourPage();
-        var buyCredit = TourPage.buyCredit();
-        var invalidCardInformation = DataHelper.getNumericName();
-        TourPage.buyCredit();
-        buyCredit.enterCreditCardData(invalidCardInformation);
-        buyCredit.invalidCreditFormat();
-    }
-
-    @DisplayName("By card with Zero Format CVV")
-    @Test
-    public void shouldNotConfirmPaymentWithZeroFormatCVV() {
-        var TourPage = new TourPage();
-        var payCard = TourPage.payCard();
-        var invalidCardInformation = DataHelper.getZeroCVV();
-        TourPage.payCard();
-        payCard.enterCardData(invalidCardInformation);
-        payCard.invalidCardFormat();
-    }
-
-    @DisplayName("By credit. Card with Zero Format CVV")
-    @Test
-    public void shouldNotConfirmBuyingOnCreditWithZeroFormatCVV() {
-        var TourPage = new TourPage();
-        var buyCredit = TourPage.buyCredit();
-        var invalidCardInformation = DataHelper.getZeroCVV();
-        TourPage.buyCredit();
-        buyCredit.enterCreditCardData(invalidCardInformation);
-        buyCredit.invalidCreditFormat();
-    }
-
-    @DisplayName("By card with Invalid Format CVV.")
-    @Test
-    public void shouldNotConfirmPaymentWithInvalidFormatCVV() {
-        var TourPage = new TourPage();
-        var payCard = TourPage.payCard();
-        var invalidCardInformation = DataHelper.getCardInformationWithInvalidFormatCVV();
-        TourPage.payCard();
-        payCard.enterCardData(invalidCardInformation);
-        payCard.invalidCardFormat();
-    }
-
-    @DisplayName("By Credit. Card with Invalid Format CVV")
-    @Test
-    public void shouldNotConfirmBuyingOnCreditWithInvalidFormatCVV() {
-        var TourPage = new TourPage();
-        var buyCredit = TourPage.buyCredit();
-        var invalidCardInformation = DataHelper.getCardInformationWithInvalidFormatCVV();
-        TourPage.buyCredit();
-        buyCredit.enterCreditCardData(invalidCardInformation);
-        buyCredit.invalidCreditFormat();
-    }
-
-    @DisplayName("By Card Invalid card number")
-    @Test
-    public void shouldNotConfirmedPaymentWithInvalidNumber() {
-        var TourPage = new TourPage();
-        var payCard = TourPage.payCard();
-        var invalidCardInformation = DataHelper.getCardInformationWithInvalidNumber();
-        TourPage.payCard();
-        payCard.enterCardData(invalidCardInformation);
-        payCard.invalidCardFormat();
-
-    }
-
-    @DisplayName("By Credit invalid card number.")
-    @Test
-    public void shouldNotPaymentWithInvalidCreditNumber() {
-        var TourPage = new TourPage();
-        var buyCredit = TourPage.buyCredit();
-        var invalidCardInformation = DataHelper.getCardInformationWithInvalidNumber();
-        TourPage.buyCredit();
-        buyCredit.enterCreditCardData(invalidCardInformation);
-        buyCredit.invalidCreditFormat();
-
-    }
-
-    @DisplayName("By card with zero in year field.")
-    @Test
-    public void shouldNotConfirmPaymentWithZeroYear() {
-        var TourPage = new TourPage();
-        var payCard = TourPage.payCard();
-        var invalidCardInformation = DataHelper.getZeroYear();
-        TourPage.payCard();
-        payCard.enterCardData(invalidCardInformation);
-        payCard.expiredPayCardYear();
-    }
-
-    @DisplayName("By credit with card with zero in year field")
-    @Test
-    public void shouldConfirmBuyingOnCreditWithZeroYear() {
-        var TourPage = new TourPage();
-        var buyCredit = TourPage.buyCredit();
-        var invalidCardInformation = DataHelper.getZeroYear();
-        TourPage.buyCredit();
-        buyCredit.enterCreditCardData(invalidCardInformation);
-        buyCredit.expiredCreditCardYear();
-    }
 }
