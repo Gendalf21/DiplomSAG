@@ -22,7 +22,7 @@
 
 Соотношение успешных/неуспешных тестов: 26/12
 
-![Отчёт]()
+[AllureReport](https://github.com/Gendalf21/DiplomSAG/blob/master/documents/Screenshot.PNG)
 
 **Общие рекомендации**
 

@@ -1,9 +1,9 @@
 # DiplomSAG
-[План тестирования]()
+[План тестирования](https://github.com/Gendalf21/DiplomSAG/blob/master/documents/Plan.md)
 
-[Отчет по тестированию]()
+[Отчет по тестированию](https://github.com/Gendalf21/DiplomSAG/blob/master/documents/Report.md)
 
-[Отчет о выполнении плана тестирования]()
+[Отчет о выполнении плана тестирования](https://github.com/Gendalf21/DiplomSAG/blob/master/documents/Summary.md)
 
 ### Запуск приложения
 
