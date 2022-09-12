@@ -31,7 +31,7 @@ public class PositiveTest {
         var tourPage = new TourPage();
         var payCard = tourPage.payCard();
         var approvedCardInformation = DataHelper.getValidCard();
-        tourPage.payCard();
+        //TourPage.payCard();
         payCard.enterCardData(approvedCardInformation);
         payCard.successfulCardPayment();
 
@@ -46,7 +46,6 @@ public class PositiveTest {
         var tourPage = new TourPage();
         var buyCredit = tourPage.buyCredit();
         var approvedCardInformation = DataHelper.getValidCard();
-        tourPage.buyCredit();
         buyCredit.enterCreditCardData(approvedCardInformation);
         buyCredit.successfulCreditCardPayment();
 
@@ -61,7 +60,6 @@ public class PositiveTest {
         var tourPage = new TourPage();
         var payCard = tourPage.payCard();
         var validCardInformation = DataHelper.getCurrentMonthAndYear();
-        tourPage.payCard();
         payCard.enterCardData(validCardInformation);
         payCard.successfulCardPayment();
 
@@ -76,7 +74,6 @@ public class PositiveTest {
         var tourPage = new TourPage();
         var buyCredit = tourPage.buyCredit();
         var validCardInformation = DataHelper.getCurrentMonthAndYear();
-        tourPage.buyCredit();
         buyCredit.enterCreditCardData(validCardInformation);
         buyCredit.successfulCreditCardPayment();
 
