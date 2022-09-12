@@ -31,7 +31,6 @@ public class PositiveTest {
         var tourPage = new TourPage();
         var payCard = tourPage.payCard();
         var approvedCardInformation = DataHelper.getValidCard();
-        //TourPage.payCard();
         payCard.enterCardData(approvedCardInformation);
         payCard.successfulCardPayment();
 

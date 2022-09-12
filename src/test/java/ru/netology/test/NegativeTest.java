@@ -32,7 +32,6 @@ public class NegativeTest {
         var tourPage = new TourPage();
         var payCard = tourPage.payCard();
         var declinedCard = DataHelper.getDeclinedCard();
-        //tourPage.payCard();
         payCard.enterCardData(declinedCard);
         payCard.notSuccessfulCardPayment();
 
