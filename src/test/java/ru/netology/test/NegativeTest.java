@@ -201,7 +201,7 @@ public class NegativeTest {
         var payCard = tourPage.payCard();
         var invalidCard = DataHelper.getExpiredMonth();
         payCard.enterCardData(invalidCard);
-        payCard.expiredPayCardMonth();
+        payCard.invalidDate();
     }
 
     @DisplayName("Credit - Expired month.")
@@ -211,7 +211,7 @@ public class NegativeTest {
         var buyCredit = tourPage.buyCredit();
         var invalidCard = DataHelper.getExpiredMonth();
         buyCredit.enterCreditCardData(invalidCard);
-        buyCredit.expiredCreditCardMonth();
+        buyCredit.invalidDate();
     }
 
     @DisplayName("Card - Invalid card number.")
@@ -241,7 +241,7 @@ public class NegativeTest {
         var payCard = tourPage.payCard();
         var invalidCard = DataHelper.getWrongYear();
         payCard.enterCardData(invalidCard);
-        payCard.invalidCardFormat();
+        payCard.invalidDate();
     }
 
     @DisplayName("Credit - Wrong year.")
@@ -251,7 +251,7 @@ public class NegativeTest {
         var buyCredit = tourPage.buyCredit();
         var invalidCard = DataHelper.getWrongYear();
         buyCredit.enterCreditCardData(invalidCard);
-        buyCredit.invalidCreditFormat();
+        buyCredit.invalidDate();
     }
 
     @DisplayName("Card - Wrong month.")
@@ -261,7 +261,7 @@ public class NegativeTest {
         var payCard = tourPage.payCard();
         var invalidCard = DataHelper.getWrongMonth();
         payCard.enterCardData(invalidCard);
-        payCard.invalidCardFormat();
+        payCard.invalidDate();
     }
 
     @DisplayName("Credit - Wrong month.")
@@ -271,7 +271,7 @@ public class NegativeTest {
         var buyCredit = tourPage.buyCredit();
         var invalidCard = DataHelper.getWrongMonth();
         buyCredit.enterCreditCardData(invalidCard);
-        buyCredit.invalidCreditFormat();
+        buyCredit.invalidDate();
     }
 
     @DisplayName("Сard - Numeric holder's name.")
@@ -321,7 +321,7 @@ public class NegativeTest {
         var payCard = tourPage.payCard();
         var invalidCard = DataHelper.getZeroCard();
         payCard.enterCardData(invalidCard);
-        payCard.invalidCardFormat();
+        payCard.notSuccessfulCardPayment();
     }
 
     @DisplayName("Credit - Zero card number.")
@@ -331,7 +331,7 @@ public class NegativeTest {
         var buyCredit = tourPage.buyCredit();
         var invalidCard = DataHelper.getZeroCard();
         buyCredit.enterCreditCardData(invalidCard);
-        buyCredit.invalidCreditFormat();
+        buyCredit.notSuccessfulCreditCardPayment();
     }
 
     @DisplayName("Card - Zero month.")
@@ -341,7 +341,7 @@ public class NegativeTest {
         var payCard = tourPage.payCard();
         var invalidCard = DataHelper.getZeroMonth();
         payCard.enterCardData(invalidCard);
-        payCard.expiredPayCardMonth();
+        payCard.invalidDate();
     }
 
     @DisplayName("Credit- Zero month.")
@@ -351,7 +351,7 @@ public class NegativeTest {
         var buyCredit = tourPage.buyCredit();
         var invalidCard = DataHelper.getZeroMonth();
         buyCredit.enterCreditCardData(invalidCard);
-        buyCredit.expiredCreditCardMonth();
+        buyCredit.invalidDate();
     }
 
     @DisplayName("Card - Zero CVV")

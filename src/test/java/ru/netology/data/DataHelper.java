@@ -176,7 +176,7 @@ public class DataHelper {
                 cardNumber.getApprovedCardNumber(),
                 dataGenerator.shiftYear(5).getYear(),
                 dataGenerator.shiftMonth(2).getMonth(),
-                enOption.lordOfTheRings().character(),
+                faker.name().fullName(),
                 "000");
     }
 

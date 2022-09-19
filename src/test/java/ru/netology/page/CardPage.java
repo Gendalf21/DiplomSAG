@@ -26,7 +26,7 @@ public class CardPage extends TourPage {
     private final SelenideElement invalidFormatError = $(withText("Неверный формат"));
     private final SelenideElement requiredToFillIn = $(withText("Поле обязательно для заполнения"));
     private final SelenideElement expiredYearError = $(withText("Истёк срок действия карты"));
-    private final SelenideElement expiredMonthError = $(withText("Неверно указан срок действия карты"));
+    private final SelenideElement invalidDateError = $(withText("Неверно указан срок действия карты"));
 
     public void enterCardData(DataHelper.CardInformation cardInformation) {
         cardNumberField.setValue(cardInformation.getCardNumber());
@@ -57,7 +57,7 @@ public class CardPage extends TourPage {
         expiredYearError.shouldBe(visible);
     }
 
-    public void expiredPayCardMonth() {
-        expiredMonthError.shouldBe(visible);
+    public void invalidDate() {
+        invalidDateError.shouldBe(visible);
     }
 }
